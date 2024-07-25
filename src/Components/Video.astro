@@ -1,0 +1,131 @@
+---
+const videos = [
+  { src: '50años.mp4', title: 'Dante Aligheri San Luis en su 50 aniversario' },
+  { src: 'cande.mp4', title: '👑 XV años 👑' },
+  { src: 'desfile.mp4', title: 'Pucheta y Fabián Paz ' },
+  { src: 'desfile2.mp4', title: '✨Desfile Happening Party ✨' },
+  { src: 'boda.mp4', title: 'Que todas las noches sean noches de Boda…❤️' },
+  { src: '.mp4', title: 'Video 3' },
+];
+
+let currentIndex = 0;
+---
+
+<div class="relative overflow-hidden flex items-center justify-center mt-40 mb-20 md:mt-20">
+  <div class="flex transition-transform duration-500 ease-in-out carousel">
+    {videos.map((video, index) => (
+      <div class="min-w-full flex-shrink-0 p-4 carousel-item invisible">
+        <video controls class="flex items-center justify-center w-80 h-[500] video">
+          <source src={video.src} type="video/mp4" />
+          Tu navegador no soporta la etiqueta de video.
+        </video>
+        <h2 class="text-center mt-2">{video.title}</h2>
+      </div>
+    ))}
+  </div>
+  <button id="prevButton" class="absolute left-0 top-1/2 transform -translate-y-1/2  p-2">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-12 h-12">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+  <button id="nextButton" class="absolute right-0 top-1/2 transform -translate-y-1/2 p-2">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-12 h-12">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+</div>
+
+<style>
+  .carousel-item.visible {
+    display: block;
+  }
+
+  .carousel-item.invisible {
+    display: none;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 1s ease-in-out;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const videos = [
+      { src: '50años.mp4', title: 'Dante Aligheri San Luis en su 50 aniversario' },
+      { src: 'cande.mp4', title: '👑 XV años 👑' },
+      { src: 'desfile.mp4', title: 'Pucheta y Fabián Paz ' },
+      { src: 'desfile2.mp4', title: '✨Desfile Happening Party ✨' },
+      { src: 'boda.mp4', title: 'Que todas las noches sean noches de Boda…❤️' },
+      { src: '.mp4', title: 'Video 3' },
+    ];
+
+    let currentIndex = 0;
+
+    function updateCarousel() {
+      const carousel = document.querySelector('.carousel');
+      const items = document.querySelectorAll('.carousel-item');
+      const videoElements = document.querySelectorAll('.video');
+      if (carousel) {
+        items.forEach((item, index) => {
+          if (index === currentIndex) {
+            item.classList.add('visible');
+            item.classList.remove('invisible');
+          } else {
+            item.classList.remove('visible');
+            item.classList.add('invisible');
+            videoElements[index].pause();  // Pausar video
+          }
+        });
+      }
+    }
+
+    function next() {
+      currentIndex = (currentIndex + 1) % videos.length;
+      updateCarousel();
+    }
+
+    function prev() {
+      currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+      updateCarousel();
+    }
+
+    function initializeCarousel() {
+      const prevButton = document.querySelector('#prevButton');
+      const nextButton = document.querySelector('#nextButton');
+
+      if (prevButton) {
+        prevButton.addEventListener('click', prev);
+      }
+
+      if (nextButton) {
+        nextButton.addEventListener('click', next);
+      }
+
+      updateCarousel(); // Llamada inicial para mostrar el primer elemento
+    }
+
+    document.addEventListener('fullscreenchange', () => {
+      const prevButton = document.querySelector('#prevButton');
+      const nextButton = document.querySelector('#nextButton');
+
+      if (document.fullscreenElement) {
+        (prevButton as HTMLElement).style.display = 'block';
+        (nextButton as HTMLElement).style.display = 'block';
+      } else {
+        (prevButton as HTMLElement).style.display = '';
+        (nextButton as HTMLElement).style.display = '';
+         }
+    });
+    initializeCarousel();
+  });
+</script>

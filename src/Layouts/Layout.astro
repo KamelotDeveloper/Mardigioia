@@ -1,0 +1,85 @@
+---
+import Barnav from "../Components/Barnav.astro";
+import Clippath from "../Components/Clippath.astro";
+import Footer from "../Components/Footer.astro";
+
+const{currentLocale} = Astro;
+console.log({currentLocale});
+---
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mardigioia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <main class="flex ">
+
+    <style>
+      .whatsapp-btn {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        z-index: 50;
+        animation: pulse 2s infinite alternate;
+      }
+      
+      body {
+        background-color: rgb(245, 247, 241);
+        background-size: screen;
+        background-size:auto
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1.1);
+        }
+      }
+      .Instagram-btn {
+        position: fixed;
+        bottom: 6rem;
+        right: 2rem;
+        z-index: 50;
+        animation: pulse 2s infinite alternate;
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1.1);
+        }
+      }
+    </style>
+  </head>
+  <Barnav />   
+  <Clippath/> 
+  <body>  
+    
+    <!-- Botón de WhatsApp -->
+    <a href="https://api.whatsapp.com/send/?phone=5548996080084&text&type=phone_number&app_absent=0" target="_blank" class="whatsapp-btn">
+      <img src="whatssapp-logo.png" alt="WhatsApp" class="w-14 h-12">
+    </a> 
+    <!-- Botón de Instagram -->
+    <a href="https://www.instagram.com/mardigioia?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="Instagram-btn">
+      <img src="Instagram-logo.png" alt="Instagram" class="w-16 h-16">
+    </a> 
+   
+      <slot>  </slot>
+   
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('menu-button').addEventListener('click', function() {
+                var menu = document.getElementById('menu');
+                menu.classList.toggle('hidden');
+            });
+        });
+    </script>
+  </main>
+</body>
+<Footer>
+
+</html>

@@ -1,0 +1,87 @@
+---
+import 'photoswipe/style.css'
+---
+<h2 class="text-3xl text-center font-semibold italic mb-20">Galeria</h2>
+
+<h4 class="text-2xl text-center font-semibold italic underline">Fifteen</h4>
+
+<div class="pswp-example__preview docs-styled-scrollbar" role="region" aria-label="Vista previa del código">
+    <div class="grid grid-cols-1 md:grid-cols-3 mt-10 mb-60 gap-6 p-8" id="gallery">
+        <!-- 1 -->
+    <a href="1.webp"
+         data-pswp-width="2500" 
+         data-pswp-height="1500" 
+         target="_blank">
+      <img class="" src="1.webp" alt="">
+    </a>
+    <!-- 2 -->
+    <a href="2.webp"
+         data-pswp-width="2500" 
+         data-pswp-height="1500" 
+         target="_blank">
+      <img class="" src="2.webp" alt="">
+    </a>
+    <!-- 3 -->
+    <a href="2b.jpg"
+         data-pswp-width="2500" 
+         data-pswp-height="1500" 
+         target="_blank">
+      <img class="" src="2b.jpg" alt="">
+    </a>
+    <!-- 4 -->
+    <a href="3.jpg"
+         data-pswp-width="2500" 
+         data-pswp-height="1500" 
+         target="_blank">
+       <img class="" src="3.jpg" alt="">
+    </a>
+    <!-- 5 -->
+    <a href="4.webp"
+         data-pswp-width="2500" 
+         data-pswp-height="1500" 
+         target="_blank">
+       <img class="" src="4.webp" alt="">
+    </a>
+    <!-- 6 -->
+    <a href="5.webp"
+         data-pswp-width="2500" 
+         data-pswp-height="1500" 
+         target="_blank">
+       <img class="" src="5.webp" alt="">
+    </a>
+    <!-- 7 -->
+    <a href="6.webp"
+         data-pswp-width="2500" 
+         data-pswp-height="1500" 
+         target="_blank">
+       <img class="" src="6.webp" alt="">
+    </a>
+    <!-- 8 -->
+    <a href="7.webp"
+         data-pswp-width="2500" 
+         data-pswp-height="1500" 
+         target="_blank">
+       <img class="" src="7.webp" alt="">
+    </a>
+    <!-- 8 -->
+    <a href="9.webp"
+         data-pswp-width="2500" 
+         data-pswp-height="1500" 
+         target="_blank">
+       <img class="" src="9.webp" alt="">
+    </a>
+   
+    </div>
+    
+    <script>
+
+        import PhotoSwipeLightbox from 'photoswipe/lightbox';
+        
+        const lightbox = new PhotoSwipeLightbox({
+          gallery: '#gallery',
+          children: 'a',
+          pswpModule: () => import('photoswipe')
+        });
+        lightbox.init();
+        
+    </script>
